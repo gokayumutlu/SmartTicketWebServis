@@ -7,6 +7,7 @@ const bodyParser=require("body-parser");
 //const userRouter=require("./routes/router/users");
 const denemeRouter=require("./deneme");
 const signuprouter=require("./routes/router/signup");
+const loginrouter=require("./routes/router/login");
 
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({extended:false}));
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
 //app.use("/users",userRouter);
 app.use("/deneme",denemeRouter);
 app.use("/signup",signuprouter);
+app.use("/login",loginrouter);
 
 console.log("app");
 module.exports=app;
