@@ -4,11 +4,11 @@ const dotenv=require("dotenv");
 dotenv.config();
 
 const pool=mysql.createPool({
-    host:process.env.HOST,
-    user:"",
-    port:"",
+    host:"127.0.0.1",
+    user:"root",
+    port:"3306",
     password:"",
-    database:""
+    database:"smartticket"
 });
 
 console.log("db");

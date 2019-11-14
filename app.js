@@ -5,6 +5,8 @@ const mysql=require("mysql");
 const bodyParser=require("body-parser");
 
 //const userRouter=require("./routes/router/users");
+const denemeRouter=require("./deneme");
+const signuprouter=require("./routes/router/signup");
 
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({extended:false}));
@@ -21,6 +23,8 @@ app.use((req, res, next) => {
 });
 
 //app.use("/users",userRouter);
+app.use("/deneme",denemeRouter);
+app.use("/signup",signuprouter);
 
 console.log("app");
 module.exports=app;
