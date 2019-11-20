@@ -9,7 +9,7 @@ router.get("/",(req,res)=>{
         var email=req.body.email;
         var userSifre=req.body.sifre;
 
-        var sql="SELECT user_password FROM appusers WHERE user_email=?";
+        var sql="SELECT user_password, password_salt FROM appusers WHERE user_email=?";
         conn.query(sql,email,function(err,rows){
             if(err){
                 console.log(err);
@@ -22,9 +22,10 @@ router.get("/",(req,res)=>{
                 }
                 else{
                     var pass=rows[0].user_password;
-                    console.log(email+" "+pass);
-                    //var hashedSifre=hashP(userSifre);
-                    if(userSifre==pass){ //fix it -> usersifre->hashedsifre
+                    var salt=rows[0].password_salt;
+                    console.log(email+"-"+salt+"-"+pass);
+                    var hashedSifre=hashP(userSifre,salt);
+                    if(hashedSifre==pass){
                         res.sendStatus(200);
                     }
                     else{

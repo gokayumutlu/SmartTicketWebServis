@@ -1,9 +1,10 @@
-const scrypt=require("scrypt");
+const crypto=require("crypto");
 
-function hashPassword(pass){
-    var key=new Buffer.from(pass);
-    var result=scrypt.hashSync(key,{"N":16, "r":1, "p":1},16,"");
+function hashPassword(pass,salt){
+    var result=crypto.scryptSync(pass,salt,16);
+    console.log(pass+"-"+salt+"-"+result.toString("hex"));
     return result.toString("hex");
+    
 }
 
 console.log("hash");
