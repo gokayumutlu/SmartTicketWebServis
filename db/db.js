@@ -8,7 +8,7 @@ const pool=mysql.createPool({
     user:"root",
     port:"3306",
     password:"",
-    database:"smartticket"
+    database:"smartticketdb"
 });
 
 console.log("db");
