@@ -19,7 +19,7 @@ router.post("/",(req,res)=>{
         var telefon=req.body.telefon;
         var dogumtarihi=req.body.dogumtarihi;
         
-        var sql="INSERT INTO appusers (user_name, user_email, user_password, password_salt, user_phone, user_date_of_birth) values (?)";
+        var sql="INSERT INTO users (user_name, user_email, user_password, user_salt, user_phone, user_date_of_birth) values (?)";
                 var values=[[ad],[email],[sifre],[salt],[telefon],[dogumtarihi]];
                 conn.query(sql,[values],function(err,rows){
                 if(err){
