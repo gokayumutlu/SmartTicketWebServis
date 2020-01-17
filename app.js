@@ -24,8 +24,10 @@ app.use((req, res, next) => {
     next();
 });
 
+
+
 //app.use("/users",userRouter);
-app.use("/deneme",denemeRouter);
+app.use("/",denemeRouter);
 app.use("/signup",signuprouter);
 app.use("/login",loginrouter);
 app.use("/try",tryrouter);

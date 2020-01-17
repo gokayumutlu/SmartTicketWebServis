@@ -7,7 +7,7 @@ router.get("/",(req,res)=>{
         if(err){
             return res.send(err);
         }
-        conn.query("select * from user",function(err,rows){
+        conn.query("select * from users",function(err,rows){
             if(err){
                 res.send(err);
             }
