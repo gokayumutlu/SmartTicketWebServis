@@ -23,8 +23,8 @@ router.get("/",(req,res)=>{
                 else{
                     var pass=rows[0].user_password;
                     var salt=rows[0].user_salt;
-                    console.log(email+"-"+salt+"-"+pass);
                     var hashedSifre=hashP(userSifre,salt);
+                    console.log(email+"-"+pass+"-"+salt+"-"+hashedSifre);
                     if(hashedSifre==pass){
                         res.sendStatus(200);
                     }
