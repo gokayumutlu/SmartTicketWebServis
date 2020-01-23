@@ -1,5 +1,5 @@
 const express=require("express");
-const mysql=require("./../../db/db").pool;
+const mysql=require("../../db/db").pool;
 const router = express.Router();
 const bodyParser=require("body-parser");
 

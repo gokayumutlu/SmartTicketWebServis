@@ -9,7 +9,7 @@ const denemeRouter=require("./deneme");
 const signuprouter=require("./routes/router/signup");
 const loginrouter=require("./routes/router/login");
 const tryrouter=require("./routes/router/try");
-const getticketrouter=require("./routes/router/gettickets");
+const getbusticketrouter=require("./routes/router/getbustickets");
 
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({extended:false}));
@@ -32,7 +32,7 @@ app.use("/",denemeRouter);
 app.use("/signup",signuprouter);
 app.use("/login",loginrouter);
 app.use("/try",tryrouter);
-app.use("/gettickets",getticketrouter);
+app.use("/getbustickets",getbusticketrouter);
 
 console.log("app");
 module.exports=app;
