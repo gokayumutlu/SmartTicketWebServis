@@ -5,14 +5,12 @@ const bodyParser=require("body-parser");
 
 router.get("/",(req,res)=>{
     mysql.getConnection(function(err,conn){
-        var fromId=req.query.fromId;
-        var toId=req.query.toId;
-        var date=req.query.date;
-        var sql="select date_format(departure_time,'%H:%i') as departure_time, travel_fare, travel_time"+
-                " from bustravel where departure_date=? and route_from_id=? and route_to_id=?";
-        var data=[date+" 00:00:00",fromId,toId];
-        conn.query(sql,data,function(err,rows){
-            console.log(data);
+        var email=req.query.email;
+        var sql="select route_from_name, route_to_name, date_format(departure_date, '%d-%m-%Y') as departure_date, date_format(departure_time,'%H:%i') as departure_time"+
+        " from purchase, bustravel,users"+
+        " where purchase.btravel_id=bustravel.btravel_id and purchase.user_id=users.user_id and users.user_email=?";
+        conn.query(sql,email,function(err,rows){
+            console.log(email);
             if(err){
                 res.status(404).send({error: err})
                 //res.json(err);
@@ -20,7 +18,7 @@ router.get("/",(req,res)=>{
             
             else{
                 //res.send(JSON.parse(JSON.stringify({ticketData:rows})));
-                res.status(200).send({ticketData:rows});
+                res.status(200).send(rows);
                 console.log(JSON.parse(JSON.stringify(rows)));
             }
         })
@@ -29,6 +27,6 @@ router.get("/",(req,res)=>{
 })
 
 
-console.log("biletleri getir");
+console.log("biletlerimi getir");
 
 module.exports=router;

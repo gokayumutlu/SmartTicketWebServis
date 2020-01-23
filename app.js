@@ -10,6 +10,7 @@ const signuprouter=require("./routes/router/signup");
 const loginrouter=require("./routes/router/login");
 const tryrouter=require("./routes/router/try");
 const getbusticketrouter=require("./routes/router/getbustickets");
+const getmyticketsrouter=require("./routes/router/getmytickets");
 
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({extended:false}));
@@ -33,6 +34,7 @@ app.use("/signup",signuprouter);
 app.use("/login",loginrouter);
 app.use("/try",tryrouter);
 app.use("/getbustickets",getbusticketrouter);
+app.use("/getmytickets",getmyticketsrouter);
 
 console.log("app");
 module.exports=app;
