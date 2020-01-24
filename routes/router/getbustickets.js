@@ -20,7 +20,7 @@ router.get("/",(req,res)=>{
             
             else{
                 //res.send(JSON.parse(JSON.stringify({ticketData:rows})));
-                res.status(200).send({ticketData:rows});
+                res.status(200).send(rows);
                 console.log(JSON.parse(JSON.stringify(rows)));
             }
         })
